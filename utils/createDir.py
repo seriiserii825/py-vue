@@ -1,5 +1,8 @@
 import os
 from pyfzf.pyfzf import FzfPrompt
+from rich import print
+from rich.console import Console
+console = Console()
 fzf = FzfPrompt()
 def createDir(basepath):
     dirs = []
@@ -9,19 +12,22 @@ def createDir(basepath):
                 dirs.append(entry.name)
     for dir in dirs:
         print(dir)
-    choose = input("Create or select, c/s: ")
+    choose = console.input("[green]Create or select directory, c/s: ")
     if choose == "c":
-        new_dir = input("Enter new directory name: ")
+        new_dir = console.input("[gren]Enter new directory name: ")
+        if new_dir in dirs:
+            print("[red]Directory already exists, try again.")
+            exit()
         os.mkdir(basepath + "/" + new_dir)
+        return basepath + "/" + new_dir
     elif choose == "s":
         selected_dir = fzf.prompt(dirs)
-        print(f"selected_dir: {selected_dir}")
         if selected_dir:
-            print(f"selected_dir[0]: {selected_dir[0]}")
-            return selected_dir[0]
+            print(f"[blue]selected_dir[0]: {selected_dir[0]}")
+            return basepath + "/" + selected_dir[0]
         else:
-            print("No directory selected, try again.")
+            print("[red]No directory selected, try again.")
             createDir(basepath)
     else:
-        print("Invalid input, try again.")
+        print("[red]Invalid console.input, try again.")
         createDir(basepath)
