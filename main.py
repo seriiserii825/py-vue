@@ -2,6 +2,7 @@ from pyfzf.pyfzf import FzfPrompt
 from rich import print
 
 from modules.componentFunc import componentFunc
+from modules.interfaceFunc import interfaceFunc
 from modules.scssFunc import scssFunc
 from modules.viewFunc import viewFunc
 fzf = FzfPrompt()
@@ -9,7 +10,8 @@ def menu():
     menu_items = [
             "View(vue)",
             "Component(vue)",
-            "Scss file"
+            "Scss file",
+            "Interface"
             ]
     selected_menu = fzf.prompt(menu_items)
     if selected_menu[0] == "View(vue)":
@@ -18,6 +20,8 @@ def menu():
         componentFunc()
     elif selected_menu[0] == "Scss file":
         scssFunc()
+    elif selected_menu[0] == "Interface":
+        interfaceFunc()
     else:
         print("Invalid selection")
         menu()
