@@ -1,6 +1,7 @@
 from pyfzf.pyfzf import FzfPrompt
 from rich import print
 
+from modules.apiFunc import apiFunc
 from modules.componentFunc import componentFunc
 from modules.hookFunc import hookFunc
 from modules.interfaceFunc import interfaceFunc
@@ -13,7 +14,8 @@ def menu():
             "Component(vue)",
             "Scss file",
             "Interface",
-            "Hook"
+            "Hook",
+            "Api"
             ]
     selected_menu = fzf.prompt(menu_items)
     if selected_menu[0] == "View(vue)":
@@ -26,6 +28,8 @@ def menu():
         interfaceFunc()
     elif selected_menu[0] == "Hook":
         hookFunc()
+    elif selected_menu[0] == "Api":
+        apiFunc()
     else:
         print("Invalid selection")
         menu()
