@@ -2,18 +2,25 @@ from pyfzf.pyfzf import FzfPrompt
 from rich import print
 
 from modules.componentFunc import componentFunc
+from modules.scssFunc import scssFunc
 from modules.viewFunc import viewFunc
 fzf = FzfPrompt()
 def menu():
     menu_items = [
-            "View",
-            "Component"
+            "View(vue)",
+            "Component(vue)",
+            "Scss file"
             ]
     selected_menu = fzf.prompt(menu_items)
-    if selected_menu[0] == "View":
-      viewFunc()
-    elif selected_menu[0] == "Component":
-      componentFunc()
+    if selected_menu[0] == "View(vue)":
+        viewFunc()
+    elif selected_menu[0] == "Component(vue)":
+        componentFunc()
+    elif selected_menu[0] == "Scss file":
+        scssFunc()
+    else:
+        print("Invalid selection")
+        menu()
 
 if __name__ == "__main__":
     menu()

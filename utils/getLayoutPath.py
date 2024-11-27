@@ -9,5 +9,7 @@ def getLayoutPath(name):
     )
     if name == "vue":
         return f"{ROOT_DIR}/layouts/layout.vue"
+    elif name == "scss":
+        return f"{ROOT_DIR}/layouts/layout.scss"
     else:
         exit('Invalid layout name')
