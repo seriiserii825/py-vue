@@ -17,5 +17,5 @@ def createFile(basepath, ext):
     if new_file in files:
         print("[red]File already exists, try again.")
         createFile(basepath, ext)
-    os.system(f"touch {basepath}/{new_file}")
+    os.system(f"touch {basepath}/{new_file}.{ext}")
     return basepath + "/" + new_file + "." + ext
