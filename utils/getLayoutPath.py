@@ -17,5 +17,7 @@ def getLayoutPath(name):
         return f"{ROOT_DIR}/layouts/layout.hook.ts"
     elif name == "api":
         return f"{ROOT_DIR}/layouts/layout.api.ts"
+    elif name == "store":
+        return f"{ROOT_DIR}/layouts/layout.store.ts"
     else:
         exit('Invalid layout name')

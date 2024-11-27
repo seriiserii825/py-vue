@@ -6,6 +6,7 @@ from modules.componentFunc import componentFunc
 from modules.hookFunc import hookFunc
 from modules.interfaceFunc import interfaceFunc
 from modules.scssFunc import scssFunc
+from modules.storeFunc import storeFunc
 from modules.viewFunc import viewFunc
 fzf = FzfPrompt()
 def menu():
@@ -15,7 +16,8 @@ def menu():
             "Scss file",
             "Interface",
             "Hook",
-            "Api"
+            "Api",
+            "Store"
             ]
     selected_menu = fzf.prompt(menu_items)
     if selected_menu[0] == "View(vue)":
@@ -30,6 +32,8 @@ def menu():
         hookFunc()
     elif selected_menu[0] == "Api":
         apiFunc()
+    elif selected_menu[0] == "Store":
+        storeFunc()
     else:
         print("Invalid selection")
         menu()
