@@ -6,7 +6,7 @@ console = Console()
 fzf = FzfPrompt()
 def createDir(basepath):
     if not os.path.exists(basepath):
-        os.mkdir(basepath)
+        os.makedirs(basepath)
     dirs = []
     with os.scandir(basepath) as entries:
         for entry in entries:
