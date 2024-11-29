@@ -5,6 +5,8 @@ from rich.console import Console
 console = Console()
 fzf = FzfPrompt()
 def createDir(basepath):
+    if not os.path.exists(basepath):
+        os.mkdir(basepath)
     dirs = []
     with os.scandir(basepath) as entries:
         for entry in entries:
