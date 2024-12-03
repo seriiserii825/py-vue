@@ -4,6 +4,7 @@ from rich import print
 from modules.apiFunc import apiFunc
 from modules.componentFunc import componentFunc
 from modules.hookFunc import hookFunc
+from modules.iconFunc import iconFunc
 from modules.interfaceFunc import interfaceFunc
 from modules.scssFunc import scssFunc
 from modules.storeFunc import storeFunc
@@ -13,6 +14,7 @@ def menu():
     menu_items = [
             "View(vue)",
             "Component(vue)",
+            "Icon(vue)",
             "Scss file",
             "Interface",
             "Hook",
@@ -24,6 +26,8 @@ def menu():
         viewFunc()
     elif selected_menu[0] == "Component(vue)":
         componentFunc()
+    elif selected_menu[0] == "Icon(vue)":
+        iconFunc()
     elif selected_menu[0] == "Scss file":
         scssFunc()
     elif selected_menu[0] == "Interface":
