@@ -30,7 +30,7 @@ config['nuxt'] = {
         'api': 'api',
         'hooks': 'hooks',
         'interfaces': 'interfaces',
-        'icons': 'icons',
+        'icons': 'components/icons',
         'scss': 'assets/scss/blocks',
         }
 
