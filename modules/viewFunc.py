@@ -1,10 +1,14 @@
 import subprocess
 from utils.camelToKebabCase import camelToKebabCase
 from utils.createFile import createFile
+from utils.getConfigData import getConfigData
 from utils.getLayoutPath import getLayoutPath
+from utils.getSelectedTemplate import getSelectedTemplate
 from utils.layoutToFile import layoutToFile
 def viewFunc():
-    dir_path = 'src/views'
+    config_txt = getSelectedTemplate()
+    is_vue = True if config_txt == 'vue' else False
+    dir_path = getConfigData(is_vue, path='pages')
     file_path = createFile(dir_path, 'vue')
     print(f"file_path: {file_path}")
     layout_path = getLayoutPath('vue')

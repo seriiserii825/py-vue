@@ -1,5 +1,6 @@
 from pyfzf.pyfzf import FzfPrompt
 from rich import print
+from config import config
 
 from modules.apiFunc import apiFunc
 from modules.componentFunc import componentFunc
