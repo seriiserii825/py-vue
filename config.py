@@ -9,7 +9,6 @@ from utils.getSelectedTemplate import getSelectedTemplate
 
 checkConfigTxt()
 config_txt = getSelectedTemplate()
-print(f"[green]Current template: ([blue]{config_txt})")
 chooseNuxtOrVue()
 
 config = ConfigParser()

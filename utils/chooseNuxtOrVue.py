@@ -1,12 +1,23 @@
+import os
 from constants import CONFIG_TXT_PATH, SCRIPT_DIR
 from utils.getSelectedTemplate import getSelectedTemplate
+from rich import print
 
 
 def chooseNuxtOrVue():
-    toggle = input("Do you want to change the template? (y/n) or Enter: ")
     config_txt = getSelectedTemplate()
-    if toggle == 'y':
+    print(f"[green]Current template: ([blue]{config_txt})")
+
+#if in root dir is src folder then it is vue project
+    if os.path.isdir('src'):
+        print("[green]Vue project detected")
         with open(f"{SCRIPT_DIR}/{CONFIG_TXT_PATH}", 'w') as file:
-            file.write('nuxt' if config_txt == 'vue' else 'vue')
+            file.write('vue')
     else:
-        print("[red]Template not changed")
+        print("[green]Nuxt project detected")
+        with open(f"{SCRIPT_DIR}/{CONFIG_TXT_PATH}", 'w') as file:
+            file.write('nuxt')
+
+    config_txt = getSelectedTemplate()
+    print(f"[green]Current template: ([blue]{config_txt})")
+    input("[green]Press Enter to continue...")
