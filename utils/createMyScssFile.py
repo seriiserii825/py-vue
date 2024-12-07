@@ -1,5 +1,5 @@
 import os
 import subprocess
-def createMyScssFile():
-    if not os.path.exists('src/scss/my.scss'):
-        subprocess.run(["touch", "src/scss/my.scss"], check=True)
+def createMyScssFile(file_path):
+    if not os.path.exists(file_path):
+        subprocess.run(["touch", file_path], check=True)

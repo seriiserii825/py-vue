@@ -22,6 +22,7 @@ config['vue'] = {
         'interfaces': 'src/interfaces',
         'icons': 'src/icons',
         'scss': 'src/scss/blocks',
+        'my.scss': 'src/scss/my.scss',
         }
 config['nuxt'] = {
         'pages': 'pages',
@@ -32,6 +33,7 @@ config['nuxt'] = {
         'interfaces': 'interfaces',
         'icons': 'components/icons',
         'scss': 'assets/scss/blocks',
+        'my.scss': 'assets/scss/my.scss',
         }
 
 with open(f"{SCRIPT_DIR}/config.ini", 'w') as configfile:
