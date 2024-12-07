@@ -1,5 +1,4 @@
 import subprocess
-from utils.createDir import createDir
 from utils.createFile import createFile
 from utils.getConfigData import getConfigData
 from utils.getLayoutPath import getLayoutPath

@@ -1,10 +1,14 @@
 import os
 import subprocess
 from utils.createFile import createFile
+from utils.getConfigData import getConfigData
 from utils.getLayoutPath import getLayoutPath
+from utils.getSelectedTemplate import getSelectedTemplate
 from utils.layoutToFile import layoutToFile
 def hookFunc():
-    dir_path = 'src/hooks'
+    config_txt = getSelectedTemplate()
+    is_vue = True if config_txt == 'vue' else False
+    dir_path = getConfigData(is_vue, path='hooks')
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
     file_path = createFile(dir_path, 'ts')
