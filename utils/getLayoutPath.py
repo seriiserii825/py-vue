@@ -13,6 +13,8 @@ def getLayoutPath(name):
         return f"{ROOT_DIR}/layouts/layout.scss"
     elif name == "interface":
         return f"{ROOT_DIR}/layouts/layout.interface.ts"
+    elif name == "type":
+        return f"{ROOT_DIR}/layouts/layout.type.ts"
     elif name == "hook":
         return f"{ROOT_DIR}/layouts/layout.hook.ts"
     elif name == "api":

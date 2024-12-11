@@ -9,6 +9,7 @@ from modules.iconFunc import iconFunc
 from modules.interfaceFunc import interfaceFunc
 from modules.scssFunc import scssFunc
 from modules.storeFunc import storeFunc
+from modules.typeFunc import typeFunc
 from modules.viewFunc import viewFunc
 fzf = FzfPrompt()
 def menu():
@@ -18,6 +19,7 @@ def menu():
             "Icon(vue)",
             "Scss file",
             "Interface",
+            "Type",
             "Hook",
             "Api",
             "Store"
@@ -33,6 +35,8 @@ def menu():
         scssFunc()
     elif selected_menu[0] == "Interface":
         interfaceFunc()
+    elif selected_menu[0] == "Type":
+        typeFunc()
     elif selected_menu[0] == "Hook":
         hookFunc()
     elif selected_menu[0] == "Api":
