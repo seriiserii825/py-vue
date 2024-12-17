@@ -4,6 +4,7 @@ from config import config
 
 from modules.apiFunc import apiFunc
 from modules.componentFunc import componentFunc
+from modules.composableFunc import composableFunc
 from modules.hookFunc import hookFunc
 from modules.iconFunc import iconFunc
 from modules.interfaceFunc import interfaceFunc
@@ -21,6 +22,7 @@ def menu():
             "Interface",
             "Type",
             "Hook",
+            "Composable",
             "Api",
             "Store"
             ]
@@ -39,6 +41,8 @@ def menu():
         typeFunc()
     elif selected_menu[0] == "Hook":
         hookFunc()
+    elif selected_menu[0] == "Composable":
+        composableFunc()
     elif selected_menu[0] == "Api":
         apiFunc()
     elif selected_menu[0] == "Store":

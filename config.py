@@ -31,6 +31,7 @@ config['nuxt'] = {
         'store': 'store',
         'api': 'api',
         'hooks': 'hooks',
+        'composables': 'composables',
         'interfaces': 'interfaces',
         'type': 'types',
         'icons': 'components/icons',
