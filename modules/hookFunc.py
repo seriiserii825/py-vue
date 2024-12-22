@@ -3,9 +3,7 @@ import subprocess
 from classes.Layout import Layout
 from utils.createFile import createFile
 from utils.getConfigData import getConfigData
-from utils.getLayoutPath import getLayoutPath
 from utils.getSelectedTemplate import getSelectedTemplate
-from utils.layoutToFile import layoutToFile
 def hookFunc():
     config_txt = getSelectedTemplate()
     is_vue = True if config_txt == 'vue' else False
