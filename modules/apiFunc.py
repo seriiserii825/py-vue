@@ -1,10 +1,8 @@
 import subprocess
-from utils.createDir import createDir
+from classes.Layout import Layout
 from utils.createFile import createFile
 from utils.getConfigData import getConfigData
-from utils.getLayoutPath import getLayoutPath
 from utils.getSelectedTemplate import getSelectedTemplate
-from utils.layoutToFile import layoutToFile
 
 def apiFunc():
     config_txt = getSelectedTemplate()
@@ -13,8 +11,7 @@ def apiFunc():
     print(f"dir_path: {dir_path}")
     file_path = createFile(dir_path, 'ts')
     print(f"file_path: {file_path}")
-    layout_path = getLayoutPath('api')
-    layoutToFile(layout_path, file_path)
+    Layout('api', file_path)
     # get file name from file path without extension
     file_name = file_path.split('/')[-1].split('.')[0]
     class_name = file_name
