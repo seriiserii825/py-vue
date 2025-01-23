@@ -6,8 +6,7 @@ from utils.getConfigData import getConfigData
 from utils.getSelectedTemplate import getSelectedTemplate
 def viewFunc():
     config_txt = getSelectedTemplate()
-    is_vue = True if config_txt == 'vue' else False
-    dir_path = getConfigData(is_vue, path='pages')
+    dir_path = getConfigData(config_txt, path='pages')
     file_path = createFile(dir_path, 'vue')
     print(f"file_path: {file_path}")
     Layout('vue', file_path)

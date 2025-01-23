@@ -25,6 +25,18 @@ config['vue'] = {
         'scss': 'src/scss/blocks',
         'my.scss': 'src/scss/my.scss',
         }
+config['wp'] = {
+        'pages': 'src/vue/views',
+        'components': 'src/vue/components',
+        'store': 'src/vue/store',
+        'api': 'src/vue/api',
+        'hooks': 'src/vue/hooks',
+        'interfaces': 'src/vue/interfaces',
+        'type': 'src/vue/types',
+        'icons': 'src/vue/icons',
+        'scss': 'src/vue/scss/blocks',
+        'my.scss': 'src/vue/scss/my.scss',
+        }
 config['nuxt'] = {
         'pages': 'pages',
         'components': 'components',

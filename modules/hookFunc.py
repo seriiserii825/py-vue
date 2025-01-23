@@ -6,8 +6,7 @@ from utils.getConfigData import getConfigData
 from utils.getSelectedTemplate import getSelectedTemplate
 def hookFunc():
     config_txt = getSelectedTemplate()
-    is_vue = True if config_txt == 'vue' else False
-    dir_path = getConfigData(is_vue, path='hooks')
+    dir_path = getConfigData(config_txt, path='hooks')
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
     file_path = createFile(dir_path, 'ts')

@@ -6,8 +6,7 @@ from utils.getSelectedTemplate import getSelectedTemplate
 
 def apiFunc():
     config_txt = getSelectedTemplate()
-    is_vue = True if config_txt == 'vue' else False
-    dir_path = getConfigData(is_vue, path='api')
+    dir_path = getConfigData(config_txt, path='api')
     print(f"dir_path: {dir_path}")
     file_path = createFile(dir_path, 'ts')
     print(f"file_path: {file_path}")

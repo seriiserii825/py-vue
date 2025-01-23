@@ -7,8 +7,7 @@ from utils.getSelectedTemplate import getSelectedTemplate
 
 def componentFunc():
     config_txt = getSelectedTemplate()
-    is_vue = True if config_txt == 'vue' else False
-    dir_path = getConfigData(is_vue, path='components')
+    dir_path = getConfigData(config_txt, path='components')
     print(f"dir_path: {dir_path}")
     file_path = createFile(dir_path, 'vue')
     print(f"file_path: {file_path}")

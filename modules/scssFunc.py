@@ -8,8 +8,7 @@ from utils.getConfigData import getConfigData
 from utils.getSelectedTemplate import getSelectedTemplate
 def scssFunc():
     config_txt = getSelectedTemplate()
-    is_vue = True if config_txt == 'vue' else False
-    dir_path = getConfigData(is_vue, path='scss')
+    dir_path = getConfigData(config_txt, path='scss')
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
     file_path = createFile(dir_path, 'scss')
@@ -17,7 +16,7 @@ def scssFunc():
     Layout('scss', file_path)
     class_name = file_path.split('/')[-1].split('.')[0]
     subprocess.run(["sed", "-i", f"s|vue|{class_name}|g", file_path], check=True)
-    my_scss_file = getConfigData(is_vue, path='my.scss')
+    my_scss_file = getConfigData(config_txt, path='my.scss')
     createMyScssFile(my_scss_file)
     # appendToFile(my_scss_file, f"@import 'blocks/{class_name}';")
     appendToFile(my_scss_file, f"@use 'blocks/{class_name}' as *;")
