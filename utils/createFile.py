@@ -7,7 +7,7 @@ fzf = FzfPrompt()
 def createFile(basepath, ext, placeholder=None):
     files = []
     if not os.path.exists(basepath):
-        print(f"[red]Path does not exist: {basepath}, may be nee to change template?")
+        print(f"[red]Path does not exist: {basepath}, create folder?")
         exit()
     with os.scandir(basepath) as entries:
         for entry in entries:
