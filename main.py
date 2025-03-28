@@ -2,6 +2,7 @@ from pyfzf.pyfzf import FzfPrompt
 from rich import print
 from config import config
 
+from simple_term_menu import TerminalMenu
 from modules.apiFunc import apiFunc
 from modules.componentFunc import componentFunc
 from modules.composableFunc import composableFunc
@@ -26,26 +27,29 @@ def menu():
             "Api",
             "Store"
             ]
-    selected_menu = fzf.prompt(menu_items)
-    if selected_menu[0] == "View(vue)":
+
+    terminal_menu = TerminalMenu(menu_items)
+    menu_entry_index = terminal_menu.show()
+
+    if menu_entry_index == 0:
         viewFunc()
-    elif selected_menu[0] == "Component(vue)":
+    elif menu_entry_index == 1:
         componentFunc()
-    elif selected_menu[0] == "Icon(vue)":
+    elif menu_entry_index == 2:
         iconFunc()
-    elif selected_menu[0] == "Scss file":
+    elif menu_entry_index == 3:
         scssFunc()
-    elif selected_menu[0] == "Interface":
+    elif menu_entry_index == 4:
         interfaceFunc()
-    elif selected_menu[0] == "Type":
+    elif menu_entry_index == 5:
         typeFunc()
-    elif selected_menu[0] == "Hook":
+    elif menu_entry_index == 6:
         hookFunc()
-    elif selected_menu[0] == "Composable":
+    elif menu_entry_index == 7:
         composableFunc()
-    elif selected_menu[0] == "Api":
+    elif menu_entry_index == 8:
         apiFunc()
-    elif selected_menu[0] == "Store":
+    elif menu_entry_index == 9:
         storeFunc()
     else:
         print("Invalid selection")
