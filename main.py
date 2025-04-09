@@ -23,37 +23,32 @@ def menu():
             "Interface",
             "Type",
             "Hook",
-            "Composable",
             "Api",
             "Store"
             ]
 
-    terminal_menu = TerminalMenu(menu_items)
-    menu_entry_index = terminal_menu.show()
+    menu_entry_index = fzf.prompt(menu_items)
 
-    if menu_entry_index == 0:
+    if menu_entry_index[0] == 'View(vue)':
         viewFunc()
-    elif menu_entry_index == 1:
+    elif menu_entry_index[0] == 'Component(vue)':
         componentFunc()
-    elif menu_entry_index == 2:
+    elif menu_entry_index[0] == 'Icon(vue)':
         iconFunc()
-    elif menu_entry_index == 3:
+    elif menu_entry_index[0] == 'Scss file':
         scssFunc()
-    elif menu_entry_index == 4:
+    elif menu_entry_index[0] == 'Interface':
         interfaceFunc()
-    elif menu_entry_index == 5:
+    elif menu_entry_index[0] == 'Type':
         typeFunc()
-    elif menu_entry_index == 6:
-        hookFunc()
-    elif menu_entry_index == 7:
+    elif menu_entry_index[0] == 'Hook':
         composableFunc()
-    elif menu_entry_index == 8:
+    elif menu_entry_index[0] == 'Api':
         apiFunc()
-    elif menu_entry_index == 9:
+    elif menu_entry_index[0] == 'Store':
         storeFunc()
     else:
-        print("Invalid selection")
-        menu()
+        exit()
 
 if __name__ == "__main__":
     menu()
