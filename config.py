@@ -50,6 +50,18 @@ config['nuxt'] = {
         'scss': 'assets/scss/blocks',
         'my.scss': 'assets/scss/my.scss',
         }
+config['laravel'] = {
+        'pages': 'resources/js/Pages',
+        'components': 'resources/js/Components',
+        'store': 'resources/js/Store',
+        'api': 'resources/js/Api',
+        'hooks': 'resources/js/Hooks',
+        'interfaces': 'resources/js/Interfaces',
+        'type': 'resources/js/Types',
+        'icons': 'resources/js/Icons',
+        'scss': 'resources/js/Scss/blocks',
+        'my.scss': 'resources/js/Scss/my.scss',
+        }
 
 with open(f"{SCRIPT_DIR}/config.ini", 'w') as configfile:
     config.write(configfile)

@@ -17,6 +17,10 @@ def chooseNuxtOrVue():
         print("[green]Vue project detected")
         with open(f"{SCRIPT_DIR}/{CONFIG_TXT_PATH}", 'w') as file:
             file.write('vue')
+    elif os.path.isdir('resources/js/'):
+        print("[green]Laravel project detected")
+        with open(f"{SCRIPT_DIR}/{CONFIG_TXT_PATH}", 'w') as file:
+            file.write('laravel')
     else:
         print("[green]Nuxt project detected")
         with open(f"{SCRIPT_DIR}/{CONFIG_TXT_PATH}", 'w') as file:
