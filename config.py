@@ -56,6 +56,7 @@ config['laravel'] = {
         'store': 'resources/js/Store',
         'api': 'resources/js/Api',
         'hooks': 'resources/js/Hooks',
+        'composables': 'resources/js/Composables',
         'interfaces': 'resources/js/Interfaces',
         'type': 'resources/js/Types',
         'icons': 'resources/js/Icons',

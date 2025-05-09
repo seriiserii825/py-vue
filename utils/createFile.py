@@ -8,7 +8,7 @@ def createFile(basepath, ext, placeholder=None):
     files = []
     if not os.path.exists(basepath):
         print(f"[red]Path does not exist: {basepath}, create folder?")
-        exit()
+        os.makedirs(basepath)
     with os.scandir(basepath) as entries:
         for entry in entries:
             if entry.is_file():

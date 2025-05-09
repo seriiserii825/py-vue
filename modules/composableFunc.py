@@ -7,6 +7,7 @@ from utils.getSelectedTemplate import getSelectedTemplate
 def composableFunc():
     config_txt = getSelectedTemplate()
     dir_path = getConfigData(config_txt, path='composables')
+    print(f'dir_path: {dir_path}')
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
     file_path = createFile(dir_path, 'ts')
