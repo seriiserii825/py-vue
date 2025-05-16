@@ -66,6 +66,13 @@ class FilesHandle:
         selected_dir = selectWithFzf(choosed_dir)
         return selected_dir
 
+    def directoryIsEmpty(self):
+        if os.path.exists(self.basepath):
+            if len(os.listdir(self.basepath)) == 0:
+                return True
+            else:
+                return False
+
     def listFilesWithPrefix(self, prefix):
         print(f"Listing directories in ================ {self.basepath}")
         for entry in os.listdir(self.basepath):
