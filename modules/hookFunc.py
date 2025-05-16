@@ -9,6 +9,10 @@ def hookFunc():
     print(f'config_txt: {config_txt}')
     dir_path = getConfigData(config_txt, path='hooks')
     print(f'dir_path: {dir_path}')
+    # if not exists dir in system create
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
+    print(f'dir_path: {dir_path}')
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
     file_path = createFile(dir_path, 'ts')
