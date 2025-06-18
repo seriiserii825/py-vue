@@ -19,7 +19,7 @@ def scssFunc():
     my_scss_file = getConfigData(config_txt, path='my.scss')
     createMyScssFile(my_scss_file)
     # appendToFile(my_scss_file, f"@import 'blocks/{class_name}';")
-    appendToFile(my_scss_file, f"@use 'blocks/{class_name}' as *;")
+    appendToFile(my_scss_file, f"@use 'blocks/{class_name}';")
     subprocess.run(["bat", file_path], check=True)
     subprocess.run(["bat", my_scss_file], check=True)
 
