@@ -1,4 +1,5 @@
 from configparser import ConfigParser
+
 from config import SCRIPT_DIR
 
 

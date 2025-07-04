@@ -1,12 +1,15 @@
 import os
+
+from pyfzf.pyfzf import FzfPrompt
 from rich import print
+
 from libs.select import selectOne
 from libs.selectWithFzf import selectWithFzf
-from pyfzf.pyfzf import FzfPrompt
+
 
 class FilesHandle:
     def __init__(self, basepath: str):
-        self.basepath = basepath if basepath != '' else '.'
+        self.basepath = basepath if basepath != "" else "."
 
     def listFiles(self, dir_path=None):
         if dir_path is not None:
@@ -40,7 +43,7 @@ class FilesHandle:
         select_or_create = selectOne(["Select", "Create"])
         if select_or_create == "Create":
             dir_name = input("Enter directory name:")
-            if dir_name == '':
+            if dir_name == "":
                 print("Directory name is required")
                 exit()
             else:
@@ -105,7 +108,7 @@ class FilesHandle:
     def addFileName(self, dir_path, placeholder):
         file_name = input(f"Enter file name like, {placeholder}: ")
         if file_name != "":
-            file_path = os.path.join(dir_path, file_name)+".php"
+            file_path = os.path.join(dir_path, file_name) + ".php"
             if os.path.exists(file_path):
                 print("[red]File already exists")
                 exit()
@@ -128,10 +131,7 @@ class FilesHandle:
         if not os.path.exists(dir_path):
             print("[red]Directory does not exist")
             exit()
-        return {
-            "dir_path": dir_path,
-            "selected_dir": selected_dir
-        }
+        return {"dir_path": dir_path, "selected_dir": selected_dir}
 
     def filePathToNamespace(self, file_path):
         # split in to array file path

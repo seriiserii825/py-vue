@@ -1,6 +1,8 @@
 import os
 
 from modules.selectWithFzf import selectWithFzf
+
+
 def chooseDir(basepath):
     choosed_dir = []
     with os.scandir(basepath) as entries:

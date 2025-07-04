@@ -1,7 +1,11 @@
 import os
+
 from rich import print
+
 from modules.chooseDir import chooseDir
 from modules.select import selectOne
+
+
 def chooseOrCreateDirectory(basepath):
     print(f"[green]Listing directories in ================ {basepath}")
     directories = []
@@ -17,7 +21,7 @@ def chooseOrCreateDirectory(basepath):
     select_or_create = selectOne(["Select", "Create"])
     if select_or_create == "Create":
         dir_name = input("Enter directory name:")
-        if dir_name == '':
+        if dir_name == "":
             print("Directory name is required")
             exit()
         else:

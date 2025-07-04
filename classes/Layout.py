@@ -1,11 +1,8 @@
 import os
 
-class Layout():
-    ROOT_DIR = os.path.dirname(
-        os.path.dirname(
-            os.path.abspath(__file__)
-        )
-    )
+
+class Layout:
+    ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     def __init__(self, name, file_path: str):
         self.name = name
@@ -30,11 +27,11 @@ class Layout():
         elif self.name == "store":
             self.layout_path = f"{self.ROOT_DIR}/layouts/layout.store.ts"
         else:
-            self.layout_path = ''
+            self.layout_path = ""
 
     def layoutToFile(self):
-        layout_file_content = '';
-        with open(self.layout_path, 'r') as file:
+        layout_file_content = ""
+        with open(self.layout_path, "r") as file:
             layout_file_content = file.read()
-        with open(self.file_path, 'w') as file:
+        with open(self.file_path, "w") as file:
             file.write(layout_file_content)
