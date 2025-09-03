@@ -47,7 +47,7 @@ config["nuxt"] = {
     "composables": "composables",
     "interfaces": "interfaces",
     "type": "types",
-    "icons": "components/icons",
+    "icons": "icons",
     "scss": "assets/scss/blocks",
     "my.scss": "assets/scss/my.scss",
 }
