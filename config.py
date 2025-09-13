@@ -51,6 +51,19 @@ config["nuxt"] = {
     "scss": "assets/scss/blocks",
     "my.scss": "assets/scss/my.scss",
 }
+config["nuxt4"] = {
+    "pages": "app/pages",
+    "components": "app/components",
+    "store": "app/store",
+    "api": "app/api",
+    "hooks": "app/hooks",
+    "composables": "app/composables",
+    "interfaces": "app/interfaces",
+    "type": "app/types",
+    "icons": "app/icons",
+    "scss": "app/assets/scss/blocks",
+    "my.scss": "app/assets/scss/my.scss",
+}
 config["laravel"] = {
     "pages": "resources/js/Pages",
     "components": "resources/js/Components",
