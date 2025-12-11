@@ -54,13 +54,13 @@ config["nuxt"] = {
 config["nuxt4"] = {
     "pages": "app/pages",
     "components": "app/components",
-    "store": "app/store",
+    "store": "app/stores",
     "api": "app/api",
     "hooks": "app/hooks",
     "composables": "app/composables",
     "interfaces": "app/interfaces",
     "type": "app/types",
-    "icons": "app/icons",
+    "icons": "app/components/Icon",
     "scss": "app/assets/scss/blocks",
     "my.scss": "app/assets/scss/my.scss",
 }
