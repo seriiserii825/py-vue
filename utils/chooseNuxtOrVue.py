@@ -15,6 +15,10 @@ def chooseNuxtOrVue():
         print("[green]Wp project detected")
         with open(f"{SCRIPT_DIR}/{CONFIG_TXT_PATH}", "w") as file:
             file.write("wp")
+    elif os.path.isdir("app") or os.path.isdir("src/app/"):
+        print("[green]Nuxt4 project detected")
+        with open(f"{SCRIPT_DIR}/{CONFIG_TXT_PATH}", "w") as file:
+            file.write("nuxt4")
     elif os.path.isdir("src"):
         print("[green]Vue project detected")
         with open(f"{SCRIPT_DIR}/{CONFIG_TXT_PATH}", "w") as file:
@@ -23,10 +27,6 @@ def chooseNuxtOrVue():
         print("[green]Laravel project detected")
         with open(f"{SCRIPT_DIR}/{CONFIG_TXT_PATH}", "w") as file:
             file.write("laravel")
-    elif os.path.isdir("app"):
-        print("[green]Nuxt4 project detected")
-        with open(f"{SCRIPT_DIR}/{CONFIG_TXT_PATH}", "w") as file:
-            file.write("nuxt4")
     else:
         print("[green]Nuxt project detected")
         with open(f"{SCRIPT_DIR}/{CONFIG_TXT_PATH}", "w") as file:

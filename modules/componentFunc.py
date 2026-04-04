@@ -20,5 +20,6 @@ def componentFunc():
     Layout("vue", file_path)
     file_name = file_path.split("/")[-1].split(".")[0]
     class_name = camelToKebabCase(file_name)
-    subprocess.run(["sed", "-i", f"s|vue|{class_name}|g", file_path], check=True)
+    subprocess.run(
+        ["sed", "-i", f"s|vue|{class_name}|g", file_path], check=True)
     subprocess.run(["bat", file_path], check=True)
