@@ -2,13 +2,18 @@ import subprocess
 
 from classes.Layout import Layout
 from utils.createFile import createFile
+from utils.detectModuleSystem import detectModuleSystem
 from utils.getConfigData import getConfigData
+from utils.getModulePath import getModulePath
 from utils.getSelectedTemplate import getSelectedTemplate
 
 
 def apiFunc():
     config_txt = getSelectedTemplate()
-    dir_path = getConfigData(config_txt, path="api")
+    if config_txt == "wp" and detectModuleSystem():
+        dir_path = getModulePath()
+    else:
+        dir_path = getConfigData(config_txt, path="api")
     print(f"dir_path: {dir_path}")
     file_path = createFile(dir_path, "ts")
     print(f"file_path: {file_path}")

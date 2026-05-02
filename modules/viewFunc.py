@@ -8,13 +8,18 @@ from classes.Layout import Layout
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
 from utils.camelToKebabCase import camelToKebabCase
 from utils.createFile import createFile
+from utils.detectModuleSystem import detectModuleSystem
 from utils.getConfigData import getConfigData
+from utils.getModulePath import getModulePath
 from utils.getSelectedTemplate import getSelectedTemplate
 
 
 def viewFunc():
     config_txt = getSelectedTemplate()
-    dir_path = getConfigData(config_txt, path="pages")
+    if config_txt == "wp" and detectModuleSystem():
+        dir_path = getModulePath()
+    else:
+        dir_path = getConfigData(config_txt, path="pages")
     print(f"dir_path: {dir_path}")
     # check if the directory exists in system
     if not os.path.exists(dir_path):

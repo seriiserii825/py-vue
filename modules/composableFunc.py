@@ -3,13 +3,18 @@ import subprocess
 
 from classes.Layout import Layout
 from utils.createFile import createFile
+from utils.detectModuleSystem import detectModuleSystem
 from utils.getConfigData import getConfigData
+from utils.getModulePath import getModulePath
 from utils.getSelectedTemplate import getSelectedTemplate
 
 
 def composableFunc():
     config_txt = getSelectedTemplate()
-    dir_path = getConfigData(config_txt, path="composables")
+    if config_txt == "wp" and detectModuleSystem():
+        dir_path = getModulePath()
+    else:
+        dir_path = getConfigData(config_txt, path="composables")
     print(f"dir_path: {dir_path}")
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)

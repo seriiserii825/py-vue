@@ -4,13 +4,18 @@ from classes.Layout import Layout
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
 from utils.camelToKebabCase import camelToKebabCase
 from utils.createFile import createFile
+from utils.detectModuleSystem import detectModuleSystem
 from utils.getConfigData import getConfigData
+from utils.getModulePath import getModulePath
 from utils.getSelectedTemplate import getSelectedTemplate
 
 
 def componentFunc():
     config_txt = getSelectedTemplate()
-    dir_path = getConfigData(config_txt, path="components")
+    if config_txt == "wp" and detectModuleSystem():
+        dir_path = getModulePath()
+    else:
+        dir_path = getConfigData(config_txt, path="components")
     need_a_dir = input("Do you need a directory? (y/n): ").strip().lower()
     if need_a_dir == "y":
         dir_name = chooseOrCreateDirectory(dir_path)

@@ -3,14 +3,19 @@ import subprocess
 
 from classes.Layout import Layout
 from utils.createFile import createFile
+from utils.detectModuleSystem import detectModuleSystem
 from utils.getConfigData import getConfigData
+from utils.getModulePath import getModulePath
 from utils.getSelectedTemplate import getSelectedTemplate
 
 
 def hookFunc():
     config_txt = getSelectedTemplate()
     print(f"config_txt: {config_txt}")
-    dir_path = getConfigData(config_txt, path="hooks")
+    if config_txt == "wp" and detectModuleSystem():
+        dir_path = getModulePath()
+    else:
+        dir_path = getConfigData(config_txt, path="hooks")
     print(f"dir_path: {dir_path}")
     # if not exists dir in system create
     if not os.path.exists(dir_path):
