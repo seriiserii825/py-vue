@@ -5,10 +5,15 @@ from rich import print
 
 from classes.Clipboard import ClipboardManager
 from modules.Notification import Notification
+from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
+from modules.selectWithFzf import selectWithFzf
 from utils.createFile import createFile
+from utils.detectModuleSystem import detectModuleSystem
 from utils.getConfigData import getConfigData
 from utils.getFromClipboard import getFromClipBoard
 from utils.getSelectedTemplate import getSelectedTemplate
+
+MODULES_DIR = "modules"
 
 
 def iconFunc():
@@ -18,7 +23,17 @@ def iconFunc():
         return
     svg_content = f"<template>\n{svg_content}\n</template>"
     config_txt = getSelectedTemplate()
-    dir_path = getConfigData(config_txt, path="icons")
+
+    if config_txt == "wp" and detectModuleSystem():
+        destination = selectWithFzf(["icons", "modules"])
+        if destination == "modules":
+            module_name = chooseOrCreateDirectory(MODULES_DIR)
+            dir_path = f"{MODULES_DIR}/{module_name}"
+        else:
+            dir_path = getConfigData(config_txt, path="icons")
+    else:
+        dir_path = getConfigData(config_txt, path="icons")
+
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
     file_path = createFile(dir_path, "vue")
