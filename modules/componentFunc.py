@@ -16,8 +16,8 @@ def componentFunc():
         dir_path = getModulePath()
     else:
         dir_path = getConfigData(config_txt, path="components")
-    dir_name = chooseOrCreateDirectory(dir_path)
-    dir_path = f"{dir_path}/{dir_name}"
+        dir_name = chooseOrCreateDirectory(dir_path)
+        dir_path = f"{dir_path}/{dir_name}"
     file_path = createFile(dir_path, "vue")
     print(f"file_path: {file_path}")
     Layout("vue", file_path)
