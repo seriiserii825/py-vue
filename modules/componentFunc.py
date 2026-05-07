@@ -2,6 +2,7 @@ import subprocess
 
 from classes.Layout import Layout
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
+from utils.autoCreateModuleScss import autoCreateModuleScss
 from utils.camelToKebabCase import camelToKebabCase
 from utils.createFile import createFile
 from utils.detectModuleSystem import detectModuleSystem
@@ -12,7 +13,8 @@ from utils.getSelectedTemplate import getSelectedTemplate
 
 def componentFunc():
     config_txt = getSelectedTemplate()
-    if config_txt == "wp" and detectModuleSystem():
+    is_wp_module = config_txt == "wp" and detectModuleSystem()
+    if is_wp_module:
         dir_path = getModulePath()
     else:
         dir_path = getConfigData(config_txt, path="components")
@@ -25,3 +27,5 @@ def componentFunc():
     class_name = camelToKebabCase(file_name)
     subprocess.run(["sed", "-i", f"s|vue|{class_name}|g", file_path], check=True)
     subprocess.run(["bat", file_path], check=True)
+    if is_wp_module:
+        autoCreateModuleScss(dir_path, class_name)
