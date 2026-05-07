@@ -1,9 +1,13 @@
 import os
 
 from rich import print
+from rich.columns import Columns
+from rich.console import Console
 
 from modules.chooseDir import chooseDir
 from modules.select import selectOne
+
+console = Console()
 
 
 def chooseOrCreateDirectory(basepath):
@@ -14,8 +18,15 @@ def chooseOrCreateDirectory(basepath):
             if entry.is_dir():
                 directories.append(entry.name)
     directories.sort()
-    for directory in directories:
-        print(f"[blue]{directory}")
+
+    terminal_lines = os.get_terminal_size().lines
+    # 4 lines reserved for headers, prompt, etc.
+    if len(directories) > terminal_lines - 4:
+        console.print(Columns([f"[blue]{d}" for d in directories], equal=True, expand=True))
+    else:
+        for directory in directories:
+            print(f"[blue]{directory}")
+
     print(f"[green]Listing directories in ================ {basepath}")
 
     select_or_create = selectOne(["Select", "Create"])
