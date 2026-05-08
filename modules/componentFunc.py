@@ -2,6 +2,7 @@ import subprocess
 
 from classes.Layout import Layout
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
+from modules.select import selectOne
 from utils.autoCreateModuleScss import autoCreateModuleScss
 from utils.camelToKebabCase import camelToKebabCase
 from utils.createFile import createFile
@@ -28,4 +29,6 @@ def componentFunc():
     subprocess.run(["sed", "-i", f"s|vue|{class_name}|g", file_path], check=True)
     subprocess.run(["bat", file_path], check=True)
     if is_wp_module:
-        autoCreateModuleScss(dir_path, class_name)
+        create_scss = selectOne(["Yes", "No"])
+        if create_scss == "Yes":
+            autoCreateModuleScss(dir_path, class_name)
