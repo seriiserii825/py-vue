@@ -3,9 +3,11 @@ import subprocess
 from classes.Layout import Layout
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
 from modules.select import selectOne
+from utils.appendToFile import appendToFile
 from utils.autoCreateModuleScss import autoCreateModuleScss
 from utils.camelToKebabCase import camelToKebabCase
 from utils.createFile import createFile
+from utils.createMyScssFile import createMyScssFile
 from utils.detectModuleSystem import detectModuleSystem
 from utils.getConfigData import getConfigData
 from utils.getModulePath import getModulePath
@@ -32,3 +34,6 @@ def componentFunc():
         create_scss = selectOne(["Yes", "No"])
         if create_scss == "Yes":
             autoCreateModuleScss(dir_path, class_name)
+            my_scss_file = getConfigData(config_txt, "my.scss")
+            createMyScssFile(my_scss_file)
+            appendToFile(my_scss_file, f"@use '@/{dir_path}/{class_name}';")

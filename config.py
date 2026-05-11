@@ -36,7 +36,7 @@ config["wp"] = {
     "type": "src/vue/types",
     "icons": "src/vue/icons",
     "scss": "src/vue/scss/blocks",
-    "my.scss": "src/vue/scss/my.scss",
+    "my.scss": "src/scss/my.scss",
 }
 config["nuxt"] = {
     "pages": "pages",
