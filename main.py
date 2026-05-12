@@ -24,6 +24,7 @@ def menu():
         "Hook",
         "Api",
         "Store",
+        "Exit",
     ]
 
     while True:
