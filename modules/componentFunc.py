@@ -29,6 +29,7 @@ def componentFunc():
         Layout("vue", file_path)
         subprocess.run(["sed", "-i", f"s|vue|{class_name}|g", file_path], check=True)
         subprocess.run(["bat", file_path], check=True)
+        print("Do you want to create a SCSS file for this component?")
         create_scss = selectOne(["Yes", "No"])
         if create_scss == "Yes":
             autoCreateModuleScss(dir_path, class_name)
