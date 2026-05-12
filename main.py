@@ -26,28 +26,29 @@ def menu():
         "Store",
     ]
 
-    menu_entry_index = fzf.prompt(menu_items)
+    while True:
+        menu_entry_index = fzf.prompt(menu_items)
 
-    if menu_entry_index[0] == "View(vue)":
-        viewFunc()
-    elif menu_entry_index[0] == "Component(vue)":
-        componentFunc()
-    elif menu_entry_index[0] == "Icon(vue)":
-        iconFunc()
-    elif menu_entry_index[0] == "Scss file":
-        scssFunc()
-    elif menu_entry_index[0] == "Interface":
-        interfaceFunc()
-    elif menu_entry_index[0] == "Type":
-        typeFunc()
-    elif menu_entry_index[0] == "Hook":
-        composableFunc()
-    elif menu_entry_index[0] == "Api":
-        apiFunc()
-    elif menu_entry_index[0] == "Store":
-        storeFunc()
-    else:
-        exit()
+        if menu_entry_index[0] == "View(vue)":
+            viewFunc()
+        elif menu_entry_index[0] == "Component(vue)":
+            componentFunc()
+        elif menu_entry_index[0] == "Icon(vue)":
+            iconFunc()
+        elif menu_entry_index[0] == "Scss file":
+            scssFunc()
+        elif menu_entry_index[0] == "Interface":
+            interfaceFunc()
+        elif menu_entry_index[0] == "Type":
+            typeFunc()
+        elif menu_entry_index[0] == "Hook":
+            composableFunc()
+        elif menu_entry_index[0] == "Api":
+            apiFunc()
+        elif menu_entry_index[0] == "Store":
+            storeFunc()
+        else:
+            exit()
 
 
 if __name__ == "__main__":
