@@ -38,6 +38,8 @@ def componentFunc():
             appendToFile(my_scss_file, f"@use '@/{dir_path}/{class_name}';")
     else:
         dir_path = getConfigData(config_txt, path="components")
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path)
         dir_name = chooseOrCreateDirectory(dir_path)
         dir_path = f"{dir_path}/{dir_name}"
         file_path = createFile(dir_path, "vue")
