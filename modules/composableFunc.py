@@ -3,9 +3,7 @@ import subprocess
 
 from classes.Layout import Layout
 from utils.createFile import createFile
-from utils.detectModuleSystem import detectModuleSystem
 from utils.getConfigData import getConfigData
-from utils.getModulePath import getModulePath
 from utils.getSelectedTemplate import getSelectedTemplate
 
 

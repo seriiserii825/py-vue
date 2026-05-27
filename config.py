@@ -19,6 +19,7 @@ config["vue"] = {
     "store": "src/store",
     "api": "src/api",
     "hooks": "src/hooks",
+    "composables": "src/composables",
     "interfaces": "src/interfaces",
     "type": "src/types",
     "icons": "src/icons",
