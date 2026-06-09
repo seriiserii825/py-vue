@@ -21,8 +21,12 @@ def componentFunc():
     is_wp_module = config_txt == "wp" and detectModuleSystem()
     if is_wp_module:
         dir_path = getModulePath()
-        folder_name = dir_path.split("/")[-1]
-        component_name = kebabToCamelCase(folder_name)
+        component_name_input = input("Enter component name (kebab-case): ")
+        if not component_name_input:
+            folder_name = dir_path.split("/")[-1]
+            component_name = kebabToCamelCase(folder_name)
+        else:
+            component_name = kebabToCamelCase(component_name_input)
         class_name = camelToKebabCase(component_name)
         file_path = f"{dir_path}/{component_name}.vue"
         os.system(f"touch {file_path}")
