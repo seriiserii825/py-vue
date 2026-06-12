@@ -20,26 +20,40 @@ def componentFunc():
     config_txt = getSelectedTemplate()
     is_wp_module = config_txt == "wp" and detectModuleSystem()
     if is_wp_module:
-        dir_path = getModulePath()
-        component_name_input = input("Enter component name (kebab-case): ")
-        if not component_name_input:
+        dir_path, dir_created = getModulePath(return_created=True)
+        if dir_created:
             folder_name = dir_path.split("/")[-1]
             component_name = kebabToCamelCase(folder_name)
-        else:
-            component_name = kebabToCamelCase(component_name_input)
-        class_name = camelToKebabCase(component_name)
-        file_path = f"{dir_path}/{component_name}.vue"
-        os.system(f"touch {file_path}")
-        Layout("vue", file_path)
-        subprocess.run(["sed", "-i", f"s|vue|{class_name}|g", file_path], check=True)
-        subprocess.run(["bat", file_path], check=True)
-        print("Do you want to create a SCSS file for this component?")
-        create_scss = selectOne(["Yes", "No"])
-        if create_scss == "Yes":
+            class_name = camelToKebabCase(component_name)
+            file_path = f"{dir_path}/{component_name}.vue"
+            os.system(f"touch {file_path}")
+            Layout("vue", file_path)
+            subprocess.run(["sed", "-i", f"s|vue|{class_name}|g", file_path], check=True)
+            subprocess.run(["bat", file_path], check=True)
             autoCreateModuleScss(dir_path, class_name)
             my_scss_file = getConfigData(config_txt, "my.scss")
             createMyScssFile(my_scss_file)
             appendToFile(my_scss_file, f"@use '@/{dir_path}/{class_name}';")
+        else:
+            component_name_input = input("Enter component name (kebab-case): ")
+            if not component_name_input:
+                folder_name = dir_path.split("/")[-1]
+                component_name = kebabToCamelCase(folder_name)
+            else:
+                component_name = kebabToCamelCase(component_name_input)
+            class_name = camelToKebabCase(component_name)
+            file_path = f"{dir_path}/{component_name}.vue"
+            os.system(f"touch {file_path}")
+            Layout("vue", file_path)
+            subprocess.run(["sed", "-i", f"s|vue|{class_name}|g", file_path], check=True)
+            subprocess.run(["bat", file_path], check=True)
+            print("Do you want to create a SCSS file for this component?")
+            create_scss = selectOne(["Yes", "No"])
+            if create_scss == "Yes":
+                autoCreateModuleScss(dir_path, class_name)
+                my_scss_file = getConfigData(config_txt, "my.scss")
+                createMyScssFile(my_scss_file)
+                appendToFile(my_scss_file, f"@use '@/{dir_path}/{class_name}';")
     else:
         dir_path = getConfigData(config_txt, path="components")
         if not os.path.exists(dir_path):

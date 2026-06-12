@@ -28,7 +28,7 @@ def _print_in_columns(items, color="blue"):
     console.print(table)
 
 
-def chooseOrCreateDirectory(basepath):
+def chooseOrCreateDirectory(basepath, return_created=False):
     print(f"[green]Listing directories in ================ {basepath}")
     directories = []
     with os.scandir(basepath) as entries:
@@ -55,7 +55,7 @@ def chooseOrCreateDirectory(basepath):
         else:
             os.makedirs(basepath + "/" + dir_name)
             print("Directory created")
-            return dir_name
+            return (dir_name, True) if return_created else dir_name
     else:
         selected_dir = chooseDir(basepath)
-        return selected_dir
+        return (selected_dir, False) if return_created else selected_dir
