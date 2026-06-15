@@ -7,7 +7,6 @@ from classes.Clipboard import ClipboardManager
 from modules.Notification import Notification
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
 from modules.selectWithFzf import selectWithFzf
-from utils.createFile import createFile
 from utils.detectModuleSystem import detectModuleSystem
 from utils.getConfigData import getConfigData
 from utils.getFromClipboard import getFromClipBoard
@@ -36,7 +35,12 @@ def iconFunc():
 
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
-    file_path = createFile(dir_path, "vue")
+
+    icon_name_input = input("Enter icon name, 'Icon' prefix will be added (e.g. Facebook): ")
+    icon_name = f"Icon{icon_name_input}"
+    print(f"[green]Icon name will be: {icon_name}")
+    file_path = f"{dir_path}/{icon_name}.vue"
+
     create_file_name_from_path(file_path)
     with open(file_path, "w") as f:
         f.write(svg_content)
