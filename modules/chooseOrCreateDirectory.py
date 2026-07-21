@@ -48,7 +48,7 @@ def chooseOrCreateDirectory(basepath, return_created=False):
 
     select_or_create = selectOne(["Select", "Create"])
     if select_or_create == "Create":
-        dir_name = input("Enter directory name:")
+        dir_name = input("Enter directory name (kebab-case): ")
         if dir_name == "":
             print("Directory name is required")
             exit()
