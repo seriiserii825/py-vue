@@ -52,6 +52,9 @@ def chooseOrCreateDirectory(basepath, return_created=False):
         if dir_name == "":
             print("Directory name is required")
             exit()
+        elif os.path.exists(basepath + "/" + dir_name):
+            print(f"[red]Directory '{dir_name}' already exists")
+            exit()
         else:
             os.makedirs(basepath + "/" + dir_name)
             print("Directory created")
