@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="vue">
+  <section class="vue">
 
-  </div>
+  </section>
 </template>
