@@ -8,7 +8,7 @@ console = Console()
 fzf = FzfPrompt()
 
 
-def createFile(basepath, ext, placeholder=None):
+def createFile(basepath, ext, placeholder=None, suffix=""):
     files = []
     if not os.path.exists(basepath):
         print(f"[red]Path does not exist: {basepath}, create folder?")
@@ -20,12 +20,13 @@ def createFile(basepath, ext, placeholder=None):
     for file in files:
         print(f"[blue]{file}")
     if placeholder:
-        print(f"[green]Create file: {placeholder}")
-    else:
-        print("[green]Create file: ")
+        print(f"[yellow]{placeholder}")
     new_file = console.input("[green]Enter new filename: ")
-    if new_file in files:
+    # add suffix (e.g. 'View') unless the user already typed it
+    if suffix and not new_file.endswith(suffix):
+        new_file = f"{new_file}{suffix}"
+    if f"{new_file}.{ext}" in files:
         print("[red]File already exists, try again.")
-        createFile(basepath, ext)
+        return createFile(basepath, ext, placeholder, suffix)
     os.system(f"touch {basepath}/{new_file}.{ext}")
     return basepath + "/" + new_file + "." + ext

@@ -18,7 +18,7 @@ def storeFunc():
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
     store_name = input("Enter store name, like popup: ")
-    file_path = createFile(dir_path, "ts", "usePopupStore")
+    file_path = createFile(dir_path, "ts", placeholder="e.g. usePopupStore")
     print(f"file_path: {file_path}")
     Layout("store", file_path)
     # get file name from file path without extension

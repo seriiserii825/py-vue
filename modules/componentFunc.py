@@ -60,7 +60,7 @@ def componentFunc():
             os.makedirs(dir_path)
         dir_name = chooseOrCreateDirectory(dir_path)
         dir_path = f"{dir_path}/{dir_name}"
-        file_path = createFile(dir_path, "vue")
+        file_path = createFile(dir_path, "vue", placeholder="PascalCase (e.g. ContactForm -> ContactForm.vue)")
         print(f"file_path: {file_path}")
         Layout("vue", file_path)
         file_name = file_path.split("/")[-1].split(".")[0]

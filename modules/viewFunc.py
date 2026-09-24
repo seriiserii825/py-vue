@@ -42,7 +42,12 @@ def viewFunc():
             dir_name = chooseOrCreateDirectory(dir_path)
             dir_path = f"{dir_path}/{dir_name}"
 
-    file_path = createFile(dir_path, "vue")
+    file_path = createFile(
+        dir_path,
+        "vue",
+        placeholder="PascalCase, 'View' suffix will be added (e.g. PageContatti -> PageContattiView.vue)",
+        suffix="View",
+    )
 
     Layout("vue", file_path)
 
