@@ -16,6 +16,7 @@ dependencies = [
     "mypy (==1.16.0)",
     "mypy-extensions (==1.1.0)",
     "pathspec (==0.12.1)",
+    "py-libs",
     "pycodestyle (==2.13.0)",
     "pyflakes (==3.3.2)",
     "pyfzf (==0.3.1)",
@@ -25,5 +26,13 @@ dependencies = [
     "simple-term-menu (==1.6.6)",
     "typing-extensions (==4.14.0)",
 ]
+
+[tool.uv.workspace]
+members = [
+    "libs/py-libs",
+]
+
+[tool.uv.sources]
+py-libs = { workspace = true, editable = true }
 
 
