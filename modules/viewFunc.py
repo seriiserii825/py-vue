@@ -1,6 +1,7 @@
 import os
 
 from py_libs.Command import Command
+from py_libs.InputValidator import InputValidator
 from py_libs.Print import Print
 
 from classes.FilesHandle import FilesHandle
@@ -32,13 +33,11 @@ def viewFunc():
         Print.error("Directory is empty")
     else:
         files_handle.listFiles()
-    inner_page = input("Do you want a inner page? (y/n): ")
-    if inner_page.lower() == "y":
+    if InputValidator.get_bool("Do you want a inner page? (y/n): "):
         dir_name = chooseOrCreateDirectory(dir_path)
         dir_path = f"{dir_path}/{dir_name}"
 
-        inner_page = input("Do you want a inner page? (y/n): ")
-        if inner_page.lower() == "y":
+        if InputValidator.get_bool("Do you want a inner page? (y/n): "):
             dir_name = chooseOrCreateDirectory(dir_path)
             dir_path = f"{dir_path}/{dir_name}"
 

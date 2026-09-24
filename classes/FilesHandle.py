@@ -3,6 +3,7 @@ import os
 from rich import print
 
 from py_libs.Command import Command
+from py_libs.InputValidator import InputValidator
 from py_libs.Print import Print
 from py_libs.Select import Select
 
@@ -36,14 +37,10 @@ class FilesHandle:
         self.listDir()
         select_or_create = Select.select_one(["Select", "Create"])
         if select_or_create == "Create":
-            dir_name = input("Enter directory name:")
-            if dir_name == "":
-                Print.error("Directory name is required")
-                exit()
-            else:
-                os.makedirs(self.basepath + "/" + dir_name)
-                Print.success("Directory created")
-                return dir_name
+            dir_name = InputValidator.get_string("Enter directory name: ")
+            os.makedirs(self.basepath + "/" + dir_name)
+            Print.success("Directory created")
+            return dir_name
         else:
             selected_dir = self.chooseDir()
             return selected_dir
@@ -94,17 +91,13 @@ class FilesHandle:
         Command.run(f"bat '{file_path}'")
 
     def addFileName(self, dir_path, placeholder):
-        file_name = input(f"Enter file name like, {placeholder}: ")
-        if file_name != "":
-            file_path = os.path.join(dir_path, file_name) + ".php"
-            if os.path.exists(file_path):
-                Print.error("File already exists")
-                exit()
-            else:
-                return file_name
-        else:
-            Print.error("File name is required")
+        file_name = InputValidator.get_string(f"Enter file name like, {placeholder}: ")
+        file_path = os.path.join(dir_path, file_name) + ".php"
+        if os.path.exists(file_path):
+            Print.error("File already exists")
             exit()
+        else:
+            return file_name
 
     def createFile(self, file_path):
         with open(file_path, "w") as f:

@@ -3,6 +3,7 @@ import os
 from rich import print
 
 from modules.chooseDir import chooseDir
+from py_libs.InputValidator import InputValidator
 from py_libs.Menu import Menu
 from py_libs.Print import Print
 from py_libs.Select import Select
@@ -26,11 +27,8 @@ def chooseOrCreateDirectory(basepath, return_created=False):
 
     select_or_create = Select.select_one(["Select", "Create"])
     if select_or_create == "Create":
-        dir_name = input("Enter directory name (kebab-case): ")
-        if dir_name == "":
-            Print.error("Directory name is required")
-            exit()
-        elif os.path.exists(basepath + "/" + dir_name):
+        dir_name = InputValidator.get_string("Enter directory name (kebab-case): ")
+        if os.path.exists(basepath + "/" + dir_name):
             Print.error(f"Directory '{dir_name}' already exists")
             exit()
         else:

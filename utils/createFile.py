@@ -1,12 +1,10 @@
 import os
 
 from rich import print
-from rich.console import Console
 
 from py_libs.Command import Command
+from py_libs.InputValidator import InputValidator
 from py_libs.Print import Print
-
-console = Console()
 
 
 def createFile(basepath, ext, placeholder=None, suffix=""):
@@ -22,7 +20,7 @@ def createFile(basepath, ext, placeholder=None, suffix=""):
         print(f"[blue]{file}")
     if placeholder:
         Print.warning(placeholder)
-    new_file = console.input("[green]Enter new filename: ")
+    new_file = InputValidator.get_string("Enter new filename: ")
     # add suffix (e.g. 'View') unless the user already typed it
     if suffix and not new_file.endswith(suffix):
         new_file = f"{new_file}{suffix}"

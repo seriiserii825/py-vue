@@ -2,6 +2,7 @@ import os
 
 from classes.Clipboard import ClipboardManager
 from py_libs.Command import Command
+from py_libs.InputValidator import InputValidator
 from py_libs.Notification import Notification
 from py_libs.Print import Print
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
@@ -35,7 +36,9 @@ def iconFunc():
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
 
-    icon_name_input = input("Enter icon name, 'Icon' prefix will be added (e.g. Facebook): ")
+    icon_name_input = InputValidator.get_string(
+        "Enter icon name, 'Icon' prefix will be added (e.g. Facebook): ", allow_empty=True
+    )
     icon_name = f"Icon{icon_name_input}"
     Print.success(f"Icon name will be: {icon_name}")
     file_path = f"{dir_path}/{icon_name}.vue"

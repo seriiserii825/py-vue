@@ -3,6 +3,7 @@ import os
 from classes.Layout import Layout
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
 from py_libs.Command import Command
+from py_libs.InputValidator import InputValidator
 from py_libs.Print import Print
 from py_libs.Select import Select
 from utils.appendToFile import appendToFile
@@ -36,7 +37,9 @@ def componentFunc():
             createMyScssFile(my_scss_file)
             appendToFile(my_scss_file, f"@use '@/{dir_path}/{class_name}';")
         else:
-            component_name_input = input("Enter component name (kebab-case): ")
+            component_name_input = InputValidator.get_string(
+                "Enter component name (kebab-case): ", allow_empty=True
+            )
             if not component_name_input:
                 folder_name = dir_path.split("/")[-1]
                 component_name = kebabToCamelCase(folder_name)
