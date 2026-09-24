@@ -1,7 +1,8 @@
 import os
-import subprocess
+
+from py_libs.Command import Command
 
 
 def createMyScssFile(file_path):
     if not os.path.exists(file_path):
-        subprocess.run(["touch", file_path], check=True)
+        Command.run(f"touch '{file_path}'")

@@ -1,7 +1,7 @@
 import os
-import subprocess
 
 from classes.Clipboard import ClipboardManager
+from py_libs.Command import Command
 from py_libs.Notification import Notification
 from py_libs.Print import Print
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
@@ -43,7 +43,7 @@ def iconFunc():
     create_file_name_from_path(file_path)
     with open(file_path, "w") as f:
         f.write(svg_content)
-    subprocess.run(["bat", file_path], check=True)
+    Command.run(f"bat '{file_path}'")
 
 
 def create_file_name_from_path(file_path):

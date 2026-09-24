@@ -2,6 +2,7 @@ import os
 
 from rich import print
 
+from py_libs.Command import Command
 from py_libs.Print import Print
 from py_libs.Select import Select
 
@@ -50,7 +51,7 @@ class FilesHandle:
     def drawTree(self, dir_path=None):
         if dir_path is not None:
             self.basepath = dir_path
-        os.system(f"tree {self.basepath}")
+        Command.run(f"tree '{self.basepath}'")
 
     def chooseDir(self):
         choosed_dir = []
@@ -90,7 +91,7 @@ class FilesHandle:
     def appendToFile(self, file_path, text):
         with open(file_path, "a") as f:
             f.write(text)
-        os.system(f"bat {file_path}")
+        Command.run(f"bat '{file_path}'")
 
     def addFileName(self, dir_path, placeholder):
         file_name = input(f"Enter file name like, {placeholder}: ")
@@ -108,7 +109,7 @@ class FilesHandle:
     def createFile(self, file_path):
         with open(file_path, "w") as f:
             f.write("")
-        os.system(f"bat {file_path}")
+        Command.run(f"bat '{file_path}'")
 
     def getDir(self):
         selected_dir = self.createOrChooseDirectory()

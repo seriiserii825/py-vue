@@ -1,13 +1,12 @@
 import os
 
-from pyfzf.pyfzf import FzfPrompt
 from rich import print
 from rich.console import Console
 
+from py_libs.Command import Command
 from py_libs.Print import Print
 
 console = Console()
-fzf = FzfPrompt()
 
 
 def createFile(basepath, ext, placeholder=None, suffix=""):
@@ -30,5 +29,5 @@ def createFile(basepath, ext, placeholder=None, suffix=""):
     if f"{new_file}.{ext}" in files:
         Print.error("File already exists, try again.")
         return createFile(basepath, ext, placeholder, suffix)
-    os.system(f"touch {basepath}/{new_file}.{ext}")
+    Command.run(f"touch '{basepath}/{new_file}.{ext}'")
     return basepath + "/" + new_file + "." + ext

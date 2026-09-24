@@ -1,6 +1,6 @@
 import os
-import subprocess
 
+from py_libs.Command import Command
 from py_libs.Print import Print
 
 from classes.FilesHandle import FilesHandle
@@ -54,7 +54,7 @@ def viewFunc():
     # get file name from file path without extension
     file_name = file_path.split("/")[-1].split(".")[0]
     class_name = camelToKebabCase(file_name)
-    subprocess.run(["sed", "-i", f"s|vue|{class_name}|g", file_path], check=True)
-    subprocess.run(["bat", file_path], check=True)
+    Command.run(f"sed -i 's|vue|{class_name}|g' '{file_path}'")
+    Command.run(f"bat '{file_path}'")
     if is_wp_module:
         autoCreateModuleScss(dir_path, class_name)

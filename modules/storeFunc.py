@@ -1,7 +1,8 @@
 import os
-import subprocess
 
 from classes.Layout import Layout
+from py_libs.Command import Command
+from py_libs.Print import Print
 from utils.createFile import createFile
 from utils.detectModuleSystem import detectModuleSystem
 from utils.getConfigData import getConfigData
@@ -19,12 +20,10 @@ def storeFunc():
         os.makedirs(dir_path)
     store_name = input("Enter store name, like popup: ")
     file_path = createFile(dir_path, "ts", placeholder="e.g. usePopupStore")
-    print(f"file_path: {file_path}")
+    Print.info(f"file_path: {file_path}")
     Layout("store", file_path)
     # get file name from file path without extension
     file_name = file_path.split("/")[-1].split(".")[0]
-    subprocess.run(
-        ["sed", "-i", f"s|usePopupStore|{file_name}|g", file_path], check=True
-    )
-    subprocess.run(["sed", "-i", f"s|popup|{store_name}|g", file_path], check=True)
-    subprocess.run(["bat", file_path], check=True)
+    Command.run(f"sed -i 's|usePopupStore|{file_name}|g' '{file_path}'")
+    Command.run(f"sed -i 's|popup|{store_name}|g' '{file_path}'")
+    Command.run(f"bat '{file_path}'")
