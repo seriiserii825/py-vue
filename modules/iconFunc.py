@@ -4,7 +4,7 @@ import subprocess
 from rich import print
 
 from classes.Clipboard import ClipboardManager
-from modules.Notification import Notification
+from py_libs.Notification import Notification
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
 from py_libs.Select import Select
 from utils.detectModuleSystem import detectModuleSystem
