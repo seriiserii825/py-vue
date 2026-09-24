@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from rich import print
+from py_libs.Print import Print
 
 from classes.FilesHandle import FilesHandle
 from classes.Layout import Layout
@@ -22,14 +22,14 @@ def viewFunc():
         dir_path = getModulePath()
     else:
         dir_path = getConfigData(config_txt, path="pages")
-    print(f"dir_path: {dir_path}")
+    Print.info(f"dir_path: {dir_path}")
     # check if the directory exists in system
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
     files_handle = FilesHandle(dir_path)
     # check if the directory is empty
     if files_handle.directoryIsEmpty():
-        print("[red]Directory is empty")
+        Print.error("Directory is empty")
     else:
         files_handle.listFiles()
     inner_page = input("Do you want a inner page? (y/n): ")

@@ -1,6 +1,6 @@
 from configparser import ConfigParser
 
-from rich import print
+from py_libs.Print import Print
 
 from constants import SCRIPT_DIR
 from utils.checkConfigTxt import checkConfigTxt
@@ -81,4 +81,4 @@ config["laravel"] = {
 
 with open(f"{SCRIPT_DIR}/config.ini", "w") as configfile:
     config.write(configfile)
-    print(f"[green]config.ini file created")
+    Print.success("config.ini file created")

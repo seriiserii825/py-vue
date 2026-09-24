@@ -2,6 +2,8 @@ import os
 
 from rich import print
 
+from py_libs.Print import Print
+
 
 def showDirectories(basepath):
     directories = []
@@ -10,7 +12,6 @@ def showDirectories(basepath):
             if entry.is_dir():
                 directories.append(entry.name)
     directories.sort()
-    print(f"[green]Directories in ================ {basepath}")
+    Print.info(f"Directories in {basepath}")
     for directory in directories:
         print(f"  [blue]{directory}")
-    print(f"[green]================================")

@@ -1,10 +1,9 @@
 import os
 import subprocess
 
-from rich import print
-
 from classes.Clipboard import ClipboardManager
 from py_libs.Notification import Notification
+from py_libs.Print import Print
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
 from py_libs.Select import Select
 from utils.detectModuleSystem import detectModuleSystem
@@ -18,7 +17,7 @@ MODULES_DIR = "modules"
 def iconFunc():
     svg_content = getFromClipBoard()
     if not "<svg" in svg_content:
-        print("[red]This is not an svg content")
+        Print.error("This is not an svg content")
         return
     svg_content = f"<template>\n{svg_content}\n</template>"
     config_txt = getSelectedTemplate()
@@ -38,7 +37,7 @@ def iconFunc():
 
     icon_name_input = input("Enter icon name, 'Icon' prefix will be added (e.g. Facebook): ")
     icon_name = f"Icon{icon_name_input}"
-    print(f"[green]Icon name will be: {icon_name}")
+    Print.success(f"Icon name will be: {icon_name}")
     file_path = f"{dir_path}/{icon_name}.vue"
 
     create_file_name_from_path(file_path)

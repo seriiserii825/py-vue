@@ -1,12 +1,12 @@
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
-from rich import print
+from py_libs.Print import Print
 
 MODULES_DIR = "modules"
 
 
 def getModulePath(return_created=False):
     # show message to press enter
-    print("[yellow]Its a module system, press enter to continue")
+    Print.warning("Its a module system, press enter to continue")
     input()
     if return_created:
         module_name, created = chooseOrCreateDirectory(MODULES_DIR, return_created=True)

@@ -2,6 +2,7 @@ import os
 
 from rich import print
 
+from py_libs.Print import Print
 from py_libs.Select import Select
 
 
@@ -12,21 +13,16 @@ class FilesHandle:
     def listFiles(self, dir_path=None):
         if dir_path is not None:
             self.basepath = dir_path
-        print("Existing files:")
-        print(f"[green]List files in ================= {self.basepath}")
-        print("")
+        Print.info(f"List files in {self.basepath}")
         for entry in os.listdir(self.basepath):
             if os.path.isfile(os.path.join(self.basepath, entry)):
                 print(f"[blue]{entry}")
 
-        print("")
-        print(f"[green]List files in ================= {self.basepath}")
-
     def listDir(self, dir_path=None):
-        print(f"[blue]Listing directories in ================ {self.basepath}")
-        directories = []
         if dir_path is not None:
             self.basepath = dir_path
+        Print.info(f"Listing directories in {self.basepath}")
+        directories = []
         with os.scandir(self.basepath) as entries:
             for entry in entries:
                 if entry.is_dir():
@@ -34,7 +30,6 @@ class FilesHandle:
         directories.sort()
         for directory in directories:
             print(f"[yellow]{directory}")
-        print(f"[blue]Listing directories in ================ {self.basepath}")
 
     def createOrChooseDirectory(self):
         self.listDir()
@@ -42,11 +37,11 @@ class FilesHandle:
         if select_or_create == "Create":
             dir_name = input("Enter directory name:")
             if dir_name == "":
-                print("Directory name is required")
+                Print.error("Directory name is required")
                 exit()
             else:
                 os.makedirs(self.basepath + "/" + dir_name)
-                print("Directory created")
+                Print.success("Directory created")
                 return dir_name
         else:
             selected_dir = self.chooseDir()
@@ -75,13 +70,12 @@ class FilesHandle:
                 return False
 
     def listFilesWithPrefix(self, prefix):
-        print(f"Listing directories in ================ {self.basepath}")
+        Print.info(f"Listing directories in {self.basepath}")
         for entry in os.listdir(self.basepath):
             if os.path.isfile(os.path.join(self.basepath, entry)):
                 for item in prefix:
                     if entry.startswith(item):
                         print(entry)
-        print(f"Listing directories in ================ {self.basepath}")
 
     def chooseFile(self):
         choosed_files = []
@@ -103,12 +97,12 @@ class FilesHandle:
         if file_name != "":
             file_path = os.path.join(dir_path, file_name) + ".php"
             if os.path.exists(file_path):
-                print("[red]File already exists")
+                Print.error("File already exists")
                 exit()
             else:
                 return file_name
         else:
-            print("[red]File name is required")
+            Print.error("File name is required")
             exit()
 
     def createFile(self, file_path):
@@ -120,9 +114,9 @@ class FilesHandle:
         selected_dir = self.createOrChooseDirectory()
         dir_path = self.basepath + "/" + selected_dir
         self.drawTree(dir_path)
-        print(f"dir_path: {dir_path}")
+        Print.info(f"dir_path: {dir_path}")
         if not os.path.exists(dir_path):
-            print("[red]Directory does not exist")
+            Print.error("Directory does not exist")
             exit()
         return {"dir_path": dir_path, "selected_dir": selected_dir}
 
