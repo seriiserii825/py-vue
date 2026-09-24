@@ -1,10 +1,10 @@
 import os
 
 from py_libs.Command import Command
+from py_libs.FilesHandle import FilesHandle
 from py_libs.InputValidator import InputValidator
 from py_libs.Print import Print
 
-from classes.FilesHandle import FilesHandle
 from classes.Layout import Layout
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
 from utils.autoCreateModuleScss import autoCreateModuleScss
@@ -27,12 +27,12 @@ def viewFunc():
     # check if the directory exists in system
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
-    files_handle = FilesHandle(dir_path)
+    files_handle = FilesHandle()
     # check if the directory is empty
-    if files_handle.directoryIsEmpty():
+    if files_handle.directory_is_empty(dir_path):
         Print.error("Directory is empty")
     else:
-        files_handle.listFiles()
+        files_handle.list_files(dir_path)
     if InputValidator.get_bool("Do you want a inner page? (y/n): "):
         dir_name = chooseOrCreateDirectory(dir_path)
         dir_path = f"{dir_path}/{dir_name}"
