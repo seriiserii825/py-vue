@@ -3,7 +3,7 @@ import subprocess
 
 from classes.Layout import Layout
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
-from modules.select import selectOne
+from py_libs.Select import Select
 from utils.appendToFile import appendToFile
 from utils.autoCreateModuleScss import autoCreateModuleScss
 from utils.camelToKebabCase import camelToKebabCase
@@ -48,7 +48,7 @@ def componentFunc():
             subprocess.run(["sed", "-i", f"s|vue|{class_name}|g", file_path], check=True)
             subprocess.run(["bat", file_path], check=True)
             print("Do you want to create a SCSS file for this component?")
-            create_scss = selectOne(["Yes", "No"])
+            create_scss = Select.select_one(["Yes", "No"])
             if create_scss == "Yes":
                 autoCreateModuleScss(dir_path, class_name)
                 my_scss_file = getConfigData(config_txt, "my.scss")

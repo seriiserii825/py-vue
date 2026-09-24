@@ -6,7 +6,7 @@ from rich import print
 from classes.Clipboard import ClipboardManager
 from modules.Notification import Notification
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
-from modules.selectWithFzf import selectWithFzf
+from py_libs.Select import Select
 from utils.detectModuleSystem import detectModuleSystem
 from utils.getConfigData import getConfigData
 from utils.getFromClipboard import getFromClipBoard
@@ -24,7 +24,7 @@ def iconFunc():
     config_txt = getSelectedTemplate()
 
     if config_txt == "wp" and detectModuleSystem():
-        destination = selectWithFzf(["icons", "modules"])
+        destination = Select.select_fzf_one(["icons", "modules"])
         if destination == "modules":
             module_name = chooseOrCreateDirectory(MODULES_DIR)
             dir_path = f"{MODULES_DIR}/{module_name}"

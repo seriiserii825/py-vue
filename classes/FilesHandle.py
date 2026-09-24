@@ -1,10 +1,8 @@
 import os
 
-from pyfzf.pyfzf import FzfPrompt
 from rich import print
 
-from libs.select import selectOne
-from libs.selectWithFzf import selectWithFzf
+from py_libs.Select import Select
 
 
 class FilesHandle:
@@ -40,7 +38,7 @@ class FilesHandle:
 
     def createOrChooseDirectory(self):
         self.listDir()
-        select_or_create = selectOne(["Select", "Create"])
+        select_or_create = Select.select_one(["Select", "Create"])
         if select_or_create == "Create":
             dir_name = input("Enter directory name:")
             if dir_name == "":
@@ -66,7 +64,7 @@ class FilesHandle:
                 if entry.is_dir():
                     choosed_dir.append(entry.name)
         choosed_dir.sort()
-        selected_dir = selectWithFzf(choosed_dir)
+        selected_dir = Select.select_fzf_one(choosed_dir)
         return selected_dir
 
     def directoryIsEmpty(self):
@@ -85,11 +83,6 @@ class FilesHandle:
                         print(entry)
         print(f"Listing directories in ================ {self.basepath}")
 
-    def selectWithFzf(self, items):
-        fzf = FzfPrompt()
-        selected_item = fzf.prompt(items)
-        return selected_item[0]
-
     def chooseFile(self):
         choosed_files = []
         for entry in os.listdir(self.basepath):
@@ -98,7 +91,7 @@ class FilesHandle:
         if len(choosed_files) == 0:
             exit("[red]No files found")
         else:
-            return selectOne(choosed_files)
+            return Select.select_one(choosed_files)
 
     def appendToFile(self, file_path, text):
         with open(file_path, "a") as f:

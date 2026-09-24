@@ -1,6 +1,6 @@
 import os
 
-from modules.selectWithFzf import selectWithFzf
+from py_libs.Select import Select
 
 
 def chooseDir(basepath):
@@ -10,5 +10,5 @@ def chooseDir(basepath):
             if entry.is_dir():
                 choosed_dir.append(entry.name)
     choosed_dir.sort()
-    selected_dir = selectWithFzf(choosed_dir)
+    selected_dir = Select.select_fzf_one(choosed_dir)
     return selected_dir

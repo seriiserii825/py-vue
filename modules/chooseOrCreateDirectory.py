@@ -5,7 +5,7 @@ from rich.console import Console
 from rich.table import Table
 
 from modules.chooseDir import chooseDir
-from modules.select import selectOne
+from py_libs.Select import Select
 
 console = Console()
 
@@ -46,7 +46,7 @@ def chooseOrCreateDirectory(basepath, return_created=False):
 
     print(f"[green]Listing directories in ================ {basepath}")
 
-    select_or_create = selectOne(["Select", "Create"])
+    select_or_create = Select.select_one(["Select", "Create"])
     if select_or_create == "Create":
         dir_name = input("Enter directory name (kebab-case): ")
         if dir_name == "":
