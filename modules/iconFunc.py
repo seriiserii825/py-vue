@@ -1,9 +1,8 @@
 import os
 
-from classes.Clipboard import ClipboardManager
+from py_libs.Clipboard import Clipboard
 from py_libs.Command import Command
 from py_libs.InputValidator import InputValidator
-from py_libs.Notification import Notification
 from py_libs.Print import Print
 from modules.chooseOrCreateDirectory import chooseOrCreateDirectory
 from py_libs.Select import Select
@@ -57,5 +56,4 @@ def create_file_name_from_path(file_path):
     # join the segments without delimiter
     file_name = segments_without_extension[-1]
     file_to_copy = f"<{file_name} />"
-    ClipboardManager.write(file_to_copy)
-    Notification(file_to_copy, f"Copied to clipboard: {file_to_copy}").notify()
+    Clipboard.write(file_to_copy)
